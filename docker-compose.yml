@@ -3,3 +3,18 @@ services:
   postgres:
     image: sgs/postgres
     build: ./postgres
+  zookeeper:
+    image: wurstmeister/zookeeper
+    expose:
+      - "2181"
+  kafka:
+    image: sgs/kafka
+    build: ./kafka
+    expose:
+      - "9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  nginx:
+    image: sgs/nginx
+    build: ./nginx
