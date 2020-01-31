@@ -18,3 +18,5 @@ services:
   nginx:
     image: sgs/nginx
     build: ./nginx
+    ports:
+      - "443:443"
